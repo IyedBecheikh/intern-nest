@@ -4,8 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Bookmark, Clock, MapPin, Briefcase, DollarSign } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import prismadb from "@/lib/prismadb"; // Adjust this path to match your structure
+import prismadb from "@/lib/prismadb";
 import { formatDistanceToNow } from "date-fns";
+import JobDescription from "@/components/job-description";
+import Link from "next/link";
 
 type JobDetailsPageProps = {
   params: {
@@ -14,6 +16,7 @@ type JobDetailsPageProps = {
 };
 
 export default async function JobDetailsPage({ params }: JobDetailsPageProps) {
+
   const job = await prismadb.job.findUnique({
     where: {
       slug: params.slug,
@@ -25,7 +28,7 @@ export default async function JobDetailsPage({ params }: JobDetailsPageProps) {
     return notFound();
   }
 
-  console.log("Job Details:", job);
+
 
   return (
     <div className="max-w-6xl mx-auto p-4 space-y-6">
@@ -72,14 +75,6 @@ export default async function JobDetailsPage({ params }: JobDetailsPageProps) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {job.tags ? job.tags.map(tag => (
-            <Badge key={tag.id} variant="secondary" className="text-xs">
-              {tag.tag}
-            </Badge>
-          )) : (
-            <Badge variant="secondary" className="text-xs">
-              No Tags Available
-              </Badge> )}
           <Badge variant="outline" className="text-xs">
             {job.experience}
           </Badge>
@@ -91,27 +86,16 @@ export default async function JobDetailsPage({ params }: JobDetailsPageProps) {
         </div>
 
         <div className="prose max-w-none text-sm leading-relaxed">
-          <h2 className="text-lg font-semibold mb-1">Job Description</h2>
-          <p>{job.description}</p>
-
-          {job.requirements ? (
-            <>
-              <h2 className="text-lg font-semibold mt-4 mb-1">Requirements</h2>
-              <ul className="list-disc list-inside">
-                {job.requirements.map(req => (
-                  <li key={req.id}>{req.requirement}</li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            <p className="text-muted-foreground">No specific requirements listed.</p>
-          )}
+          <h2 className="text-lg font-semibold mb-">Job Description:</h2>
+          <JobDescription html={job.description} />
         </div>
 
         <div className="pt-4 flex justify-end">
-          <Button className="bg-blue-500 text-white hover:bg-blue-600">
-            Apply Now
-          </Button>
+          <Link href={job.applyUrl || "#"} target="_blank" rel="noopener noreferrer">
+            <Button className="bg-blue-500 text-white hover:bg-blue-600">
+              Apply Now
+            </Button>
+          </Link>
         </div>
       </Card>
     </div>

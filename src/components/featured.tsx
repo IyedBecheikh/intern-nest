@@ -1,41 +1,6 @@
 import { JobCard } from "./job-card"
 import prismadb from "@/lib/prismadb"
 
-const StaticFeaturedInternships = [
-  {
-    slug: "frontend-intern-google",
-    title: "Frontend Developer Intern",
-    description: "Join our team as a Frontend Developer Intern and work on exciting projects that impact millions of users.",
-    company: "Google",
-    logoUrl: "https://logo.clearbit.com/google.com",
-    location: "Mountain View, CA",
-    type: "Internship",
-    postedAt: "2 days ago",
-    experience: "Entry-Level",
-    salary: "$3,000/mo",
-    isRemote: true,
-    tags: ["JavaScript", "React", "Summer 2025"],
-    source: "RemoteOK"
-  },
-  {
-    slug: "backend-intern-facebook",
-    title: "Backend Developer Intern",
-    description: "Join our team as a Backend Developer Intern and work on exciting projects that impact millions of users.",
-    company: "Facebook",
-    logoUrl: "https://logo.clearbit.com/facebook.com",
-    location: "Menlo Park, CA",
-    type: "Internship",
-    postedAt: "1 week ago",
-    experience: "Entry-Level",
-    salary: "$3,500/mo",
-    isRemote: false,
-    tags: ["Python", "Django", "Summer 2025"],
-    source: "RemoteOK"
-  }
-]
-
-
-
 export const Featured =  async () => {
 
   // Get featured internships and jobs from the database prismadb
@@ -64,7 +29,6 @@ export const Featured =  async () => {
     description: job.description,
     requirements: job.requirements || []
   }));
-  console.log("Mapped Jobs:", jobs);
 
   return (
     <div className="bg-secondary p-8 rounded-xl w-4/5 mx-auto">

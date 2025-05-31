@@ -13,4 +13,5 @@ export type Job = {
   source?: string
   description: string
   requirements?: string[]
+  applyUrl: string
 }

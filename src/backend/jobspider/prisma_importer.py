@@ -6,8 +6,8 @@ def insert_job(job_data):
     cur = conn.cursor()
 
     cur.execute("""
-        INSERT INTO "Job" (slug, title, company, location, type, posted_at, experience, description, source, is_remote, logo_url)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO "Job" (slug, title, company, location, type, posted_at, experience, description, source, is_remote, logo_url, apply_url)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (slug) DO UPDATE
         SET title = EXCLUDED.title,
             company = EXCLUDED.company,
@@ -18,7 +18,8 @@ def insert_job(job_data):
             experience = EXCLUDED.experience,
             description = EXCLUDED.description,
             source = EXCLUDED.source,
-            is_remote = EXCLUDED.is_remote
+            is_remote = EXCLUDED.is_remote,
+            apply_url = EXCLUDED.apply_url
     """, (
         job_data["slug"],
         job_data["title"],
@@ -31,6 +32,7 @@ def insert_job(job_data):
         job_data["source"],
         job_data["is_remote"],
         job_data["logo_url"],
+        job_data.get("apply_url")
     ))
 
     conn.commit()

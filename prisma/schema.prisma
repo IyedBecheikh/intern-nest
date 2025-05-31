@@ -15,36 +15,18 @@ datasource db {
 }
 
 model Job {
-  id           Int               @id @default(autoincrement())
-  slug         String            @unique
-  title        String
-  company      String
-  logoUrl      String?           @map("logo_url")
-  location     String
-  type         String
-  postedAt     DateTime          @map("posted_at")
-  experience   String
-  salary       String?
-  isRemote     Boolean?          @map("is_remote")
-  source       String?
-  description  String
-  tags         JobTag[]
-  requirements JobRequirement[]
-
-}
-
-model JobTag {
-  id     Int   @id @default(autoincrement())
-  job    Job   @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  jobId  Int @map("job_id")
-  tag    String
-
-}
-
-model JobRequirement {
-  id          Int   @id @default(autoincrement())
-  job         Job   @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  jobId       Int @map("job_id")
-  requirement String
-
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  title       String
+  company     String
+  logoUrl     String?  @map("logo_url")
+  location    String
+  type        String
+  postedAt    DateTime @map("posted_at")
+  experience  String
+  salary      String?
+  isRemote    Boolean? @map("is_remote")
+  source      String?
+  description String
+  applyUrl    String  @map("apply_url")
 }

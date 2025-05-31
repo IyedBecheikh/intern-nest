@@ -20,6 +20,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { Job } from "@/types/job"
+import JobDescription from "./job-description"
 
 type JobCardProps = {
     job: Job
@@ -35,7 +36,7 @@ export const JobCard = ({ job }: JobCardProps) => {
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Card className="p-4 flex flex-col md:flex-row items-start justify-between gap-4 hover:shadow-lg transition-shadow hover:bg-black">
+                <Card className="p-4 flex flex-col md:flex-row items-start justify-between gap-4 hover:shadow-lg transition-shadow hover:bg-secondary cursor-pointer">
                     <div className="flex gap-4 items-start w-full">
                         {logoUrl ? (
                             <Image
@@ -47,7 +48,7 @@ export const JobCard = ({ job }: JobCardProps) => {
                             />
                         ) : (
                             <div className="w-12 h-12 bg-gray-600 rounded flex items-center justify-center text-sm text-muted-foreground">
-                                {company.slice(0,2).toUpperCase()}
+                                {company.slice(0, 2).toUpperCase()}
                             </div>
                         )}
 
@@ -112,7 +113,7 @@ export const JobCard = ({ job }: JobCardProps) => {
                 </Card>
             </SheetTrigger>
 
-            <SheetContent className="overflow-y-auto p-6 max-w-md md:min-w-[500px]">
+            <SheetContent className="overflow-y-auto p-6 max-w-md md:min-w-[800px]">
                 <SheetTitle className="sr-only">{title}</SheetTitle>
 
                 <div className="flex flex-col gap-4">
@@ -160,7 +161,7 @@ export const JobCard = ({ job }: JobCardProps) => {
 
                     <div className="prose prose-sm max-w-none text-sm text-muted-foreground">
                         <h4 className="font-medium">Job Description</h4>
-                        <p>{description}</p>
+                        <JobDescription html={description} />
 
                         {Array.isArray(requirements) && requirements.length > 0 && (
                             <>

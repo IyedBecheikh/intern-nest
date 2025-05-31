@@ -1,7 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
 
 @custom-variant dark (&:is(.dark *));
+
+
 
 @theme inline {
   --color-background: var(--background);
@@ -118,5 +122,15 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@utility prose {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-accent-foreground
+  }
+
+  a {
+    @apply text-muted-foreground;
   }
 }
