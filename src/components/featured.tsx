@@ -3,8 +3,13 @@ import prismadb from "@/lib/prismadb"
 
 export const Featured =  async () => {
 
-  // Get featured internships and jobs from the database prismadb
-  const FeaturedInternships = await prismadb.job.findMany()
+  // Get 20 featured internships and jobs from the database prismadb
+  const FeaturedInternships = await prismadb.job.findMany({
+    orderBy: {
+      postedAt: "desc"
+    },
+    take: 10
+  });
 
 
   // Convert the data to Job type
@@ -12,7 +17,7 @@ export const Featured =  async () => {
     slug: job.slug,
     title: job.title,
     company: job.company,
-    logoUrl: job.logoUrl,
+    logoUrl: job.logoUrl || undefined,
     location: job.location,
     type: job.type,
     // Convert postedAt to a readable format
@@ -22,12 +27,11 @@ export const Featured =  async () => {
       day: 'numeric'
     }),
     experience: job.experience,
-    salary: job.salary,
-    isRemote: job.isRemote,
-    tags: job.tags || [],
-    source: job.source,
+    salary: job.salary || undefined,
+    isRemote: job.isRemote || false,
+    source: job.source || "InternNest",
     description: job.description,
-    requirements: job.requirements || []
+    applyUrl: job.applyUrl,
   }));
 
   return (

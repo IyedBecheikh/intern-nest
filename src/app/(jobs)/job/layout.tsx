@@ -1,4 +1,5 @@
 
+import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 
 const RootLayout = ({
@@ -10,6 +11,7 @@ const RootLayout = ({
         <div className="h-full space-y-2 mx-auto">
         <Navbar/>
         <main>{children}</main>
+        <Footer/>
         </div>
     );
 }
