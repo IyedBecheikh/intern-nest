@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+
+# InternNest
+
+<p>A job and internship discovery prototype with a Next.js interface and a Prisma-backed job model.</p>
+
+<p>
+  <a href="https://github.com/IyedBecheikh/intern-nest">Repository</a>
+  · <a href="https://github.com/IyedBecheikh/intern-nest/issues">Issues</a>
+</p>
+
+</div>
+
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Screenshots and Demo](#screenshots-and-demo)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+## About
+
+A job and internship discovery prototype with a Next.js interface and a Prisma-backed job model.
+
+**Status:** Early-stage public prototype; the current app shell and data model need a complete user-facing flow.
+
+## Features
+
+- Install dependencies and configure `DATABASE_URL` for the Prisma PostgreSQL schema:
+- ```bash
+- npm install
+- npx prisma generate
+- npm run dev
+- ```
+- Run `npm run lint` and `npm run build` before deployment.
+
+## Tech Stack
+
+- Job records with company, location, type, experience, salary, remote flag, and source`n- Apply links and descriptive job pages`n- PostgreSQL-oriented Prisma schema`n- Next.js and TypeScript application foundation
+
+## Screenshots and Demo
+
+No license file is currently present. Add a license before accepting external contributions.
 
 ## Getting Started
 
-First, run the development server:
+Use the application as an internship and job discovery surface once the listing and detail pages are wired to the database.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Usage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build the first complete browse, detail, and apply-link flow Add ingestion, freshness, search, and filtering Document seeded demo data and production database setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] The current `Job` schema is the clearest source of product intent; the page shell remains in progress.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+This is a focused project maintained by Iyed Becheikh. Issues and pull requests are welcome when they include a clear problem statement, reproduction details, or a focused improvement proposal.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Maintainer: [Iyed Becheikh](https://github.com/IyedBecheikh)
+
+Project: [https://github.com/IyedBecheikh/intern-nest](https://github.com/IyedBecheikh/intern-nest)
+
+## Acknowledgements
+
+- [Awesome README Template](https://github.com/Louis3797/awesome-readme-template)
+- The open-source libraries and platform documentation referenced by the project.
