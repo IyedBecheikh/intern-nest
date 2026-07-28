@@ -1,79 +1,37 @@
-<div align="center">
-
 # InternNest
 
-<p>A job and internship discovery prototype with a Next.js interface and a Prisma-backed job model.</p>
+A Next.js job and internship discovery prototype backed by a Prisma job model.
 
-<p>
-  <a href="https://github.com/IyedBecheikh/intern-nest">Repository</a>
-  · <a href="https://github.com/IyedBecheikh/intern-nest/issues">Issues</a>
-</p>
+> Status: early prototype. The repository defines job data and UI foundations; browse, detail, ingestion, and search flows still need to be completed and documented.
 
-</div>
+## Current model
 
-## Table of Contents
+Each job can include a title, company, location, employment type, experience level, salary, remote flag, source, description, and application URL.
 
-- [About](#about)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Screenshots and Demo](#screenshots-and-demo)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
+## Stack
 
-## About
+- Next.js 15, React 19, and TypeScript
+- Prisma with PostgreSQL
+- Tailwind CSS, Radix UI, and Lucide
 
-A job and internship discovery prototype with a Next.js interface and a Prisma-backed job model.
+## Run locally
 
-**Status:** Early-stage public prototype; the current app shell and data model need a complete user-facing flow.
+Configure `DATABASE_URL`, then run:
 
-## Features
+```bash
+npm install
+npx prisma generate
+npm run dev
+```
 
-- Install dependencies and configure `DATABASE_URL` for the Prisma PostgreSQL schema:
-- ```bash
-- npm install
-- npx prisma generate
-- npm run dev
-- ```
-- Run `npm run lint` and `npm run build` before deployment.
+The development server starts at `http://localhost:3000`.
 
-## Tech Stack
+## Next steps
 
-- Job records with company, location, type, experience, salary, remote flag, and source`n- Apply links and descriptive job pages`n- PostgreSQL-oriented Prisma schema`n- Next.js and TypeScript application foundation
-
-## Screenshots and Demo
-
-No license file is currently present. Add a license before accepting external contributions.
-
-## Getting Started
-
-Use the application as an internship and job discovery surface once the listing and detail pages are wired to the database.
-
-## Usage
-
-Build the first complete browse, detail, and apply-link flow Add ingestion, freshness, search, and filtering Document seeded demo data and production database setup
-
-## Roadmap
-
-- [ ] The current `Job` schema is the clearest source of product intent; the page shell remains in progress.
-
-## Contributing
-
-This is a focused project maintained by Iyed Becheikh. Issues and pull requests are welcome when they include a clear problem statement, reproduction details, or a focused improvement proposal.
+- Finish browse, job-detail, and apply-link flows.
+- Add ingestion, search, filters, and freshness checks.
+- Add seeded demo data and database setup documentation.
 
 ## License
 
-
-
-## Contact
-
-Maintainer: [Iyed Becheikh](https://github.com/IyedBecheikh)
-
-Project: [https://github.com/IyedBecheikh/intern-nest](https://github.com/IyedBecheikh/intern-nest)
-
-## Acknowledgements
-
-- [Awesome README Template](https://github.com/Louis3797/awesome-readme-template)
-- The open-source libraries and platform documentation referenced by the project.
+No license file is currently included.
